@@ -28,12 +28,12 @@ class Unet(nn.Module):
         super(Unet, self).__init__()
 
         # Left side (contracting path)
-        self.maxpool = nn.MaxPool2d(kernel_size=2, stride=2)
         self.dwn_conv1 = dual_conv(1, 64)
         self.dwn_conv2 = dual_conv(64, 128)
         self.dwn_conv3 = dual_conv(128, 256)
         self.dwn_conv4 = dual_conv(256, 512)
         self.dwn_conv5 = dual_conv(512, 1024)
+        self.maxpool = nn.MaxPool2d(kernel_size=2, stride=2)
 
         #Right side  (expnsion path) 
         #transpose convolution is used showna as green arrow in architecture image
